@@ -1,4 +1,3 @@
-/* --- RESET & BASE --- */
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +10,6 @@ body {
   color: #222;
 }
 
-/* --- HEADER --- */
 .header {
   height: 90px;
   width: 100%;
@@ -26,7 +24,6 @@ body {
   z-index: 1000;
 }
 
-/* --- LOGO --- */
 .logo-area {
   display: flex;
   align-items: center;
@@ -52,7 +49,6 @@ body {
   color: #2b2b2b;
 }
 
-/* --- NAV LINKS --- */
 .nav-links {
   display: flex;
   gap: 25px;
@@ -88,7 +84,6 @@ body {
   width: 100%;
 }
 
-/* --- ICONS --- */
 .icons {
   display: flex;
   align-items: center;
@@ -106,7 +101,6 @@ body {
   transform: scale(1.1);
 }
 
-/* --- MENU TOGGLE --- */
 .menu-toggle {
   display: none;
   background: none;
@@ -121,7 +115,6 @@ body {
   transform: rotate(90deg);
 }
 
-/* --- MARQUEE --- */
 .marquee {
   width: 100%;
   overflow: hidden;
@@ -147,7 +140,6 @@ body {
   }
 }
 
-/* --- COLLECTION DROPDOWN (DESKTOP) --- */
 .collections-wrapper {
   position: relative;
   display: inline-block;
@@ -160,10 +152,9 @@ body {
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-/* Desktop: slide from top */
 .collections-dropdown.desktop {
   position: fixed;
-  top: 90px;
+  top: 60px;
   left: 0;
   width: 100%;
   z-index: 999;
@@ -178,7 +169,6 @@ body {
   animation: slideFromTop 0.5s ease-out;
 }
 
-/* --- COLLECTION BOXES --- */
 .AllCollectionsInHeader {
   background-color: #fff;
   border: 1px solid #ddd;
@@ -262,8 +252,8 @@ body {
   transform: translateY(-20px);
   transition: all 0.4s ease;
   z-index: 2000;
-  border-radius: 0; /* Remove rounded corners for full width */
-  border: none; /* Remove border */
+  border-radius: 0;
+  border: none;
 }
 
 .collections-dropdown.show.mobile {
@@ -273,18 +263,16 @@ body {
   transform: translateY(0);
 }
 
-/* Full width mobile collections */
 .collections-dropdown.mobile .AllCollectionsInHeader {
   width: 100%;
   max-width: 100%;
   margin: 0;
   padding: 1.5rem 1rem;
-  border: none; /* Remove the red border */
+  border: none;
   box-shadow: none;
   border-radius: 0;
 }
 
-/* --- RESPONSIVE --- */
 @media (max-width: 992px) {
   .AllCollectionsInHeader {
     height: 300px;
@@ -334,7 +322,6 @@ body {
     gap: 15px;
   }
 
-  /* MOBILE COLLECTIONS - FULL WIDTH */
   .collections-dropdown.mobile .AllCollectionsInHeader {
     flex-direction: column;
     height: auto;
@@ -348,7 +335,7 @@ body {
     width: 100%;
     height: 180px;
     flex: none;
-    border-radius: 8px; /* Keep some rounding for cards */
+    border-radius: 8px;
   }
 }
 
@@ -361,7 +348,6 @@ body {
     height: 60px;
   }
 
-  /* MOBILE COLLECTIONS - FULL WIDTH SMALL SCREENS */
   .collections-dropdown.mobile .AllCollectionsInHeader {
     min-height: 450px;
     padding: 1rem 0.5rem;
@@ -383,16 +369,14 @@ body {
   }
 }
 
-/* Remove the debug border */
 .AllCollectionsInHeader {
-  border: none; /* Remove the red border */
+  border: none;
 }
 
 .nav-links.open { 
   overflow: visible; 
 }
 
-/* Ensure the dropdown container doesn't clip content */
 .collections-dropdown {
   overflow: visible !important;
 }
@@ -400,9 +384,8 @@ body {
 .collections-dropdown.mobile .AllCollectionsInHeader {
   overflow: visible !important;
 }
-/* --- ANIMATIONS FOR COLLECTIONS --- */
 
-/* Slide from top animation */
+
 @keyframes slideFromTop {
   from {
     opacity: 0;
@@ -414,7 +397,6 @@ body {
   }
 }
 
-/* Slide from left animation */
 @keyframes slideFromLeft {
   from {
     opacity: 0;
@@ -426,7 +408,6 @@ body {
   }
 }
 
-/* Staggered fade in animation */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -438,7 +419,6 @@ body {
   }
 }
 
-/* Scale in animation */
 @keyframes scaleIn {
   from {
     opacity: 0;
@@ -450,9 +430,6 @@ body {
   }
 }
 
-/* --- DESKTOP ANIMATIONS --- */
-
-/* Desktop dropdown animation */
 .collections-dropdown.show.desktop {
   opacity: 1;
   visibility: visible;
@@ -461,7 +438,6 @@ body {
   animation: slideFromTop 0.5s ease-out;
 }
 
-/* Desktop collection items with staggered animation */
 .collections-dropdown.show.desktop .AllCollectionsInHeader {
   animation: slideFromTop 0.6s ease-out;
 }
@@ -470,7 +446,6 @@ body {
   animation: fadeInUp 0.6s ease-out both;
 }
 
-/* Stagger the desktop collection items */
 .collections-dropdown.show.desktop .SingleCollectionForHeader:nth-child(1) {
   animation-delay: 0.1s;
 }
@@ -484,9 +459,6 @@ body {
   animation-delay: 0.4s;
 }
 
-/* --- MOBILE ANIMATIONS --- */
-
-/* Mobile dropdown animation */
 .collections-dropdown.show.mobile {
   opacity: 1;
   visibility: visible;
@@ -495,7 +467,6 @@ body {
   animation: slideFromTop 0.4s ease-out;
 }
 
-/* Mobile collection items with slide from left animation */
 .collections-dropdown.show.mobile .AllCollectionsInHeader {
   animation: slideFromTop 0.5s ease-out;
 }
@@ -505,7 +476,6 @@ body {
   transform-origin: left center;
 }
 
-/* Stagger the mobile collection items */
 .collections-dropdown.show.mobile .SingleCollectionForHeader:nth-child(1) {
   animation-delay: 0.1s;
 }
@@ -519,9 +489,7 @@ body {
   animation-delay: 0.4s;
 }
 
-/* Hover effects remain but with enhanced animations */
 .SingleCollectionForHeader {
-  /* Your existing styles */
   flex: 1;
   height: 300px;
   border-radius: 10px;

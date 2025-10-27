@@ -16,14 +16,12 @@ export default function Header() {
   const [collection, setCollection] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  /** Detect screen resize */
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  /** Close dropdown when clicking outside (mobile only) */
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (
@@ -59,7 +57,6 @@ export default function Header() {
   return (
     <>
       <header className="header">
-        {/* Logo */}
         <div className="logo-area">
           <img
             src={logo}
@@ -113,7 +110,6 @@ export default function Header() {
           <Link to="/">All Products</Link>
         </nav>
 
-        {/* Icons */}
         <div className="icons">
           <Link to="/cart" className="icon-button">
             <FontAwesomeIcon icon={faCartShopping} />
@@ -134,7 +130,6 @@ export default function Header() {
   );
 }
 
-/** Safe wrapper */
 function SafeAllCollectionsInHeader() {
   try {
     return <AllCollectionsInHeader />;
