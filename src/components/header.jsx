@@ -13,7 +13,7 @@ import AllCollectionsInHeader from "./allCollectionsInHeader";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [collection, setCollection] = useState(true);
+  const [collection, setCollection] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   /** Detect screen resize */
