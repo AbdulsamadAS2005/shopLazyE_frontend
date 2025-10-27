@@ -1,52 +1,158 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronDown,
+  faChevronUp,
   faCartShopping,
   faUser,
   faEllipsisV,
 } from "@fortawesome/free-solid-svg-icons";
+import AllCollectionsInHeader from "./allCollectionsInHeader";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [collection, setCollection] = useState(true);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  /** Detect screen resize */
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  /** Close dropdown when clicking outside (mobile only) */
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        !e.target.closest(".collections-wrapper") &&
+        !e.target.closest(".collections-dropdown")
+      ) {
+        setCollection(false);
+      }
+    };
+    if (collection && isMobile) {
+      document.addEventListener("click", handleClickOutside);
+    }
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [collection, isMobile]);
+
+  const handleLogoError = (e) => {
+    e.target.src =
+      "https://via.placeholder.com/150x50.png?text=Shop+LazyE+Logo";
+  };
+
+  const handleMouseEnter = () => {
+    if (!isMobile) setCollection(true);
+  };
+  const handleMouseLeave = () => {
+    if (!isMobile) setCollection(false);
+  };
+
+  const handleToggleCollections = (e) => {
+    e.preventDefault();
+    if (isMobile) setCollection((prev) => !prev);
+  };
 
   return (
-    <header className="header">
-      {/* Left: Logo + Brand */}
-      <div className="logo-area">
-        <img src={logo} alt="Shop LazyE Logo" className="logo" />
+    <>
+      <header className="header">
+        {/* Logo */}
+        <div className="logo-area">
+          <img
+            src={logo}
+            alt="Shop LazyE Logo"
+            className="logo"
+            onError={handleLogoError}
+          />
+        </div>
 
-      </div>
+        <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
+          <div
+            className="collections-wrapper"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <Link
+              to="#"
+              aria-haspopup="true"
+              aria-expanded={collection}
+              onClick={handleToggleCollections}
+            >
+              Collections{" "}
+              <FontAwesomeIcon
+                icon={faChevronDown}
+                className="icon-small"
+                style={{
+                  transform: collection ? "rotate(180deg)" : "rotate(0deg)",
+                  transition: "transform 0.3s ease",
+                }}
+              />
+            </Link>
 
-      {/* Middle: Nav Links (hidden on mobile) */}
-      <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
-        <Link to="#">
-          Collections{" "}
-          <FontAwesomeIcon icon={faChevronDown} className="icon-small" />
-        </Link>
-        <Link to="/">All Products</Link>
-      </nav>
+            {collection && (
+              <div
+                className={`collections-dropdown ${collection ? "show" : ""
+                  } ${isMobile ? "mobile" : "desktop"}`}
+              >
+                <Suspense
+                  fallback={
+                    <div style={{ padding: "2rem", textAlign: "center" }}>
+                      Loading collections...
+                    </div>
+                  }
+                >
+                  <SafeAllCollectionsInHeader />
+                </Suspense>
+              </div>
+            )}
+          </div>
 
-      {/* Right: Icons */}
-      <div className="icons">
-        <Link to="/cart" className="icon-button">
-          <FontAwesomeIcon icon={faCartShopping} />
-        </Link>
-        <Link to="/account" className="icon-button">
-          <FontAwesomeIcon icon={faUser} />
-        </Link>
+          <Link to="/">All Products</Link>
+        </nav>
 
-        {/* Mobile Menu Toggle (Three Dots) */}
-        <button
-          className="menu-toggle"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <FontAwesomeIcon icon={faEllipsisV} />
-        </button>
-      </div>
-    </header>
+        {/* Icons */}
+        <div className="icons">
+          <Link to="/cart" className="icon-button">
+            <FontAwesomeIcon icon={faCartShopping} />
+          </Link>
+          <Link to="/account" className="icon-button">
+            <FontAwesomeIcon icon={faUser} />
+          </Link>
+          <button
+            className="menu-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            <FontAwesomeIcon icon={faEllipsisV} />
+          </button>
+        </div>
+      </header>
+    </>
   );
+}
+
+/** Safe wrapper */
+function SafeAllCollectionsInHeader() {
+  try {
+    return <AllCollectionsInHeader />;
+  } catch (error) {
+    console.error("❌ Failed to render AllCollectionsInHeader:", error);
+    return (
+      <div
+        style={{
+          backgroundColor: "#fff",
+          color: "#222",
+          padding: "2rem",
+          textAlign: "center",
+          border: "1px solid #ccc",
+        }}
+      >
+        <p>⚠️ Something went wrong loading collections.</p>
+        <small>Please refresh the page or try again later.</small>
+      </div>
+    );
+  }
 }

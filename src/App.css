@@ -1,3 +1,4 @@
+/* --- RESET & BASE --- */
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +11,7 @@ body {
   color: #222;
 }
 
-/* HEADER CONTAINER */
+/* --- HEADER --- */
 .header {
   height: 90px;
   width: 100%;
@@ -22,10 +23,10 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
 }
 
-/* LOGO & BRAND */
+/* --- LOGO --- */
 .logo-area {
   display: flex;
   align-items: center;
@@ -37,6 +38,8 @@ body {
   width: auto;
   cursor: pointer;
   transition: transform 0.3s ease;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .logo:hover {
@@ -49,10 +52,11 @@ body {
   color: #2b2b2b;
 }
 
-/* NAV LINKS */
+/* --- NAV LINKS --- */
 .nav-links {
   display: flex;
   gap: 25px;
+  align-items: center;
 }
 
 .nav-links a {
@@ -84,7 +88,7 @@ body {
   width: 100%;
 }
 
-/* ICONS */
+/* --- ICONS --- */
 .icons {
   display: flex;
   align-items: center;
@@ -102,13 +106,13 @@ body {
   transform: scale(1.1);
 }
 
-/* MENU TOGGLE (THREE DOTS) */
+/* --- MENU TOGGLE --- */
 .menu-toggle {
   display: none;
   background: none;
   border: none;
   color: #333;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -117,73 +121,7 @@ body {
   transform: rotate(90deg);
 }
 
-/* SMALL ICON ADJUSTMENT */
-.icon-small {
-  font-size: 0.8em;
-  margin-left: 4px;
-}
-
-/* --------------------- */
-/* 📱 RESPONSIVE SECTION */
-/* --------------------- */
-
-@media (max-width: 768px) {
-  .header {
-    padding: 0 20px;
-  }
-
-  .brand-name {
-    font-size: 1.25rem;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 90px;
-    right: 0;
-    background: #f8f7f4;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 200px;
-    padding: 15px 25px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    border-top: 1px solid #e5e5e5;
-    display: none;
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .nav-links a {
-    width: 100%;
-    padding: 10px 0;
-  }
-
-  .icons {
-    gap: 15px;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-}
-
-@media (max-width: 480px) {
-  .brand-name {
-    display: none;
-  }
-
-  .logo {
-    height: 50px;
-  }
-
-  .nav-links {
-    width: 100%;
-    top: 80px;
-  }
-}
-
-
+/* --- MARQUEE --- */
 .marquee {
   width: 100%;
   overflow: hidden;
@@ -207,4 +145,396 @@ body {
   to {
     transform: translateX(-100%);
   }
+}
+
+/* --- COLLECTION DROPDOWN (DESKTOP) --- */
+.collections-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.collections-dropdown {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Desktop: slide from top */
+.collections-dropdown.desktop {
+  position: fixed;
+  top: 90px;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  transform: translateY(-20px);
+}
+
+.collections-dropdown.show.desktop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  animation: slideFromTop 0.5s ease-out;
+}
+
+/* --- COLLECTION BOXES --- */
+.AllCollectionsInHeader {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  height: 350px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 2rem;
+  overflow: hidden;
+}
+
+.SingleCollectionForHeader {
+  flex: 1;
+  height: 300px;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.SingleCollectionForHeader:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.collection-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1.5rem;
+  color: white;
+  text-align: center;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+}
+
+.collection-content h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.collection-content button {
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.collection-content button:hover {
+  background-color: black;
+  color: white;
+}
+
+.collections-dropdown.mobile {
+  position: absolute;
+  top: 90px;
+  right: -82px;
+  width: 100vw;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  margin-top: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-20px);
+  transition: all 0.4s ease;
+  z-index: 2000;
+  border-radius: 0; /* Remove rounded corners for full width */
+  border: none; /* Remove border */
+}
+
+.collections-dropdown.show.mobile {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Full width mobile collections */
+.collections-dropdown.mobile .AllCollectionsInHeader {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 1.5rem 1rem;
+  border: none; /* Remove the red border */
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+  .AllCollectionsInHeader {
+    height: 300px;
+    gap: 0.5rem;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 20px;
+  }
+
+  .brand-name {
+    font-size: 1.25rem;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 90px;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #f8f7f4;
+    width: 220px;
+    padding: 15px 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: none;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .nav-links.open {
+    display: flex;
+    overflow: visible;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .icons {
+    gap: 15px;
+  }
+
+  /* MOBILE COLLECTIONS - FULL WIDTH */
+  .collections-dropdown.mobile .AllCollectionsInHeader {
+    flex-direction: column;
+    height: auto;
+    min-height: 500px;
+    padding: 1.5rem 1rem;
+    gap: 1rem;
+    background: #fff;
+  }
+
+  .SingleCollectionForHeader {
+    width: 100%;
+    height: 180px;
+    flex: none;
+    border-radius: 8px; /* Keep some rounding for cards */
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-name {
+    display: none;
+  }
+
+  .logo {
+    height: 60px;
+  }
+
+  /* MOBILE COLLECTIONS - FULL WIDTH SMALL SCREENS */
+  .collections-dropdown.mobile .AllCollectionsInHeader {
+    min-height: 450px;
+    padding: 1rem 0.5rem;
+    gap: 0.8rem;
+  }
+
+  .SingleCollectionForHeader {
+    height: 140px;
+    min-height: 140px;
+  }
+
+  .collection-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .collection-content button {
+    font-size: 0.85rem;
+    padding: 7px 14px;
+  }
+}
+
+/* Remove the debug border */
+.AllCollectionsInHeader {
+  border: none; /* Remove the red border */
+}
+
+.nav-links.open { 
+  overflow: visible; 
+}
+
+/* Ensure the dropdown container doesn't clip content */
+.collections-dropdown {
+  overflow: visible !important;
+}
+
+.collections-dropdown.mobile .AllCollectionsInHeader {
+  overflow: visible !important;
+}
+/* --- ANIMATIONS FOR COLLECTIONS --- */
+
+/* Slide from top animation */
+@keyframes slideFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide from left animation */
+@keyframes slideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Staggered fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scale in animation */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- DESKTOP ANIMATIONS --- */
+
+/* Desktop dropdown animation */
+.collections-dropdown.show.desktop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  animation: slideFromTop 0.5s ease-out;
+}
+
+/* Desktop collection items with staggered animation */
+.collections-dropdown.show.desktop .AllCollectionsInHeader {
+  animation: slideFromTop 0.6s ease-out;
+}
+
+.collections-dropdown.show.desktop .SingleCollectionForHeader {
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+/* Stagger the desktop collection items */
+.collections-dropdown.show.desktop .SingleCollectionForHeader:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.collections-dropdown.show.desktop .SingleCollectionForHeader:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.collections-dropdown.show.desktop .SingleCollectionForHeader:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.collections-dropdown.show.desktop .SingleCollectionForHeader:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* --- MOBILE ANIMATIONS --- */
+
+/* Mobile dropdown animation */
+.collections-dropdown.show.mobile {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  animation: slideFromTop 0.4s ease-out;
+}
+
+/* Mobile collection items with slide from left animation */
+.collections-dropdown.show.mobile .AllCollectionsInHeader {
+  animation: slideFromTop 0.5s ease-out;
+}
+
+.collections-dropdown.show.mobile .SingleCollectionForHeader {
+  animation: slideFromLeft 0.5s ease-out both;
+  transform-origin: left center;
+}
+
+/* Stagger the mobile collection items */
+.collections-dropdown.show.mobile .SingleCollectionForHeader:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.collections-dropdown.show.mobile .SingleCollectionForHeader:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.collections-dropdown.show.mobile .SingleCollectionForHeader:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.collections-dropdown.show.mobile .SingleCollectionForHeader:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* Hover effects remain but with enhanced animations */
+.SingleCollectionForHeader {
+  /* Your existing styles */
+  flex: 1;
+  height: 300px;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.SingleCollectionForHeader:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 }
