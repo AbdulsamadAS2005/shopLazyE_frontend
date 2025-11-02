@@ -7,10 +7,10 @@ import SingleCollectionForHeader from "../sub_components/singleCollectionForHead
 
 export default function AllCollectionsInHeader() {
   const collections = [
-    { name: "Summer Collection", img: summer },
-    { name: "Winter Collection", img: winter },
-    { name: "Best Sellers", img: bestseller },
-    { name: "New Arrivals", img: newArrivals },
+    { link:"/collections/summer", name: "Summer Collection", img: summer },
+    { link:"/collections/winter", name: "Winter Collection", img: winter },
+    { link:"/bestsellers", name: "Best Sellers", img: bestseller },
+    { link:"/newarrivals", name: "New Arrivals", img: newArrivals },
   ];
 
   return (
@@ -21,6 +21,7 @@ export default function AllCollectionsInHeader() {
           button="Shop Now"
           name={col.name}
           img={col.img}
+          link={col.link}
         />
       ))}
     </div>

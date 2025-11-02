@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function SingleCollectionForHeader({ button, name, img }) {
+export default function SingleCollectionForHeader({ button, name, img, link}) {
   return (
     <div
       className="SingleCollectionForHeader"
@@ -14,7 +14,7 @@ export default function SingleCollectionForHeader({ button, name, img }) {
     >
       <div className="collection-content">
         <h3>{name}</h3>
-        <Link to="/shop">
+        <Link to={link}>
           <button>{button}</button>
         </Link>
       </div>

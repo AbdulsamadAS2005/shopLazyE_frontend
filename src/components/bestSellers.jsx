@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import ListingSingleProduct from "../sub_components/listingSingleProduct";
-import { Link } from "react-router-dom";
 const apiURL = import.meta.env.VITE_Backend;
+import { Link } from "react-router-dom";
 
-export default function NewArrivals() {
-  const [newArrivals, setNewArrivals] = useState([]);
+export default function BestSeller() {
+  const [bestSellers, setBestSellers] = useState([]);
 
   useEffect(() => {
-    const handleNewArrivals = async () => {
+    const handleBestSellers = async () => {
       try {
-        const response = await fetch(`${apiURL}/newArrivals`, {
+        const response = await fetch(`${apiURL}/bestSellers`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -18,27 +18,27 @@ export default function NewArrivals() {
 
         if (response.ok) {
           const data = await response.json();
-          setNewArrivals(data);
+          setBestSellers(data);
         } else {
-          console.error("Failed to fetch new arrivals");
+          console.error("Failed to fetch best sellers");
         }
       } catch (error) {
-        console.error("Error fetching new arrivals:", error);
+        console.error("Error fetching best sellers:", error);
       }
     };
 
-    handleNewArrivals();
+    handleBestSellers();
   }, []);
 
   return (
     <>
     {
-        newArrivals.length>=1?
+        bestSellers.length>=1?
         <div className="newarrivals">
-      <h2>NEW ARRIVALS</h2>
+      <h2>BEST SELLERS</h2>
       <div className="allarrivals">
-        {newArrivals.length > 0 ? (
-          newArrivals.slice(0, 8).map((product, i) => (
+        {bestSellers.length > 0 ? (
+          bestSellers.slice(0, 8).map((product, i) => (
             <ListingSingleProduct key={product._id || i} Name={product.Name} Price={product.Price} DiscountedPrice={product.DiscountedPrice} img={product.ImageUrl} />
           ))
         ) : (
@@ -46,7 +46,7 @@ export default function NewArrivals() {
         )}
       </div>
       <div className="viewAll">
-        <Link to={'/newarrivals'}>View All</Link>
+        <Link to={'/bestsellers'}>View All</Link>
       </div>
     </div>
     :""

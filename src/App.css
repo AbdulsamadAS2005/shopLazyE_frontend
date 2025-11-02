@@ -606,7 +606,6 @@ body {
 .singleProduct p:nth-of-type(2) {
   font-size: 0.9rem;
   color: #a0aec0;
-  text-decoration: line-through;
   margin-bottom: 4px;
   text-align: center;
 }
@@ -843,4 +842,27 @@ body {
   .product-name {
     font-size: 0.85rem;
   }
+}
+.viewAll{
+  height:100px;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-top: 30px;
+}
+.viewAll a{
+  height:40px;
+  width:100px;
+  display: flex;
+  background-color: black;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: 0.3s ease-in;
+}
+.viewAll a:hover{
+  transform: scale(1.1);
 }
