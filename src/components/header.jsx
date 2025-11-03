@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronDown,
-  faChevronUp,
   faCartShopping,
   faUser,
   faEllipsisV,
@@ -58,12 +57,14 @@ export default function Header() {
     <>
       <header className="header">
         <div className="logo-area">
-          <img
-            src={logo}
-            alt="Shop LazyE Logo"
-            className="logo"
-            onError={handleLogoError}
-          />
+          <Link to={'/'}>
+            <img
+              src={logo}
+              alt="Shop LazyE Logo"
+              className="logo"
+              onError={handleLogoError}
+            />
+          </Link>
         </div>
 
         <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
@@ -107,7 +108,7 @@ export default function Header() {
             )}
           </div>
 
-          <Link to="/">All Products</Link>
+          <Link to="/allproducts">All Products</Link>
         </nav>
 
         <div className="icons">

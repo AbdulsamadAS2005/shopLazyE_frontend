@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function WinterCollection() {
   const [winterCollection, setWinterCollection] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchWinterCollection = async () => {
@@ -24,6 +25,8 @@ export default function WinterCollection() {
         }
       } catch (error) {
         console.error("Error fetching winter collection:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -51,6 +54,11 @@ export default function WinterCollection() {
           <div className="viewAll">
             <Link to={"/wintercollection"}>View All</Link>
           </div>
+        </div>
+      ) : loading ? (
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading Winter Collection...</p>
         </div>
       ) : (
         ""

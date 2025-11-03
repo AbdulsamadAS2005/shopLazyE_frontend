@@ -7,8 +7,8 @@ import SingleCollectionForHeader from "../sub_components/singleCollectionForHead
 
 export default function AllCollectionsInHeader() {
   const collections = [
-    { link:"/collections/summer", name: "Summer Collection", img: summer },
-    { link:"/collections/winter", name: "Winter Collection", img: winter },
+    { link:"/summercollection", name: "Summer Collection", img: summer },
+    { link:"/wintercollection", name: "Winter Collection", img: winter },
     { link:"/bestsellers", name: "Best Sellers", img: bestseller },
     { link:"/newarrivals", name: "New Arrivals", img: newArrivals },
   ];

@@ -5,6 +5,7 @@ const apiURL = import.meta.env.VITE_Backend;
 
 export default function NewArrivals() {
   const [newArrivals, setNewArrivals] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const handleNewArrivals = async () => {
@@ -24,6 +25,8 @@ export default function NewArrivals() {
         }
       } catch (error) {
         console.error("Error fetching new arrivals:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -49,7 +52,12 @@ export default function NewArrivals() {
         <Link to={'/newarrivals'}>View All</Link>
       </div>
     </div>
-    :""
+    : loading ? (
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading New Arrivals...</p>
+        </div>
+      ) : ""
     }
     </>
   );

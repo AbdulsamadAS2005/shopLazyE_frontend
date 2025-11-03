@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function BestSeller() {
   const [bestSellers, setBestSellers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const handleBestSellers = async () => {
@@ -24,6 +25,8 @@ export default function BestSeller() {
         }
       } catch (error) {
         console.error("Error fetching best sellers:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -49,7 +52,12 @@ export default function BestSeller() {
         <Link to={'/bestsellers'}>View All</Link>
       </div>
     </div>
-    :""
+    : loading ? (
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading Best Sellers...</p>
+        </div>
+      ) : ""
     }
     </>
   );

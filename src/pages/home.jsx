@@ -6,6 +6,8 @@ import NewArrivals from '../components/newArrivals'
 import BestSeller from '../components/bestSellers'
 import SummerCollection from '../components/summer'
 import WinterCollection from '../components/winter'
+import UpperFooter from '../components/upperFooter'
+import Footer from '../components/footer'
 const apiURL = import.meta.env.VITE_Backend;
 
 export default function Home() {
@@ -51,6 +53,8 @@ export default function Home() {
             :
             <SummerCollection />
       }
+      <UpperFooter/>
+      <Footer/>
     </div>
   )
 }

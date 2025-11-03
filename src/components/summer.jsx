@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function SummerCollection() {
   const [summerCollection, setSummerCollection] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchSummerCollection = async () => {
@@ -18,13 +19,14 @@ export default function SummerCollection() {
 
         if (response.ok) {
           const data = await response.json();
-          
           setSummerCollection(data);
         } else {
           console.error("Failed to fetch summer collection");
         }
       } catch (error) {
         console.error("Error fetching summer collection:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -52,6 +54,11 @@ export default function SummerCollection() {
           <div className="viewAll">
             <Link to={"/summercollection"}>View All</Link>
           </div>
+        </div>
+      ) : loading ? (
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading Summer Collection...</p>
         </div>
       ) : (
         ""
