@@ -115,9 +115,6 @@ export default function Header() {
           <Link to="/cart" className="icon-button">
             <FontAwesomeIcon icon={faCartShopping} />
           </Link>
-          <Link to="/account" className="icon-button">
-            <FontAwesomeIcon icon={faUser} />
-          </Link>
           <button
             className="menu-toggle"
             onClick={() => setMenuOpen(!menuOpen)}

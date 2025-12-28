@@ -41,14 +41,15 @@ export default function SummerCollection() {
           <div className="allarrivals">
             {summerCollection.length > 0
               ? summerCollection.slice(0, 8).map((product, i) => (
-                  <ListingSingleProduct
-                    key={product._id || i}
-                    Name={product.Name}
-                    Price={product.Price}
-                    DiscountedPrice={product.DiscountedPrice}
-                    img={product.ImageUrl}
-                  />
-                ))
+                <ListingSingleProduct
+                  key={product._id || i}
+                  Name={product.Name}
+                  Price={product.Price}
+                  DiscountedPrice={product.DiscountedPrice}
+                  img={product.ImageUrl}
+                  link={product._id}
+                />
+              ))
               : ""}
           </div>
           <div className="viewAll">

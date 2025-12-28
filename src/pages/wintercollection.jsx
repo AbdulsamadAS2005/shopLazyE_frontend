@@ -127,6 +127,7 @@ export default function Wintercollection() {
                                     Price={product.Price}
                                     DiscountedPrice={product.DiscountedPrice}
                                     img={product.ImageUrl}
+                                    link={product._id}
                                 />
                             ))}
                         </div>
@@ -141,8 +142,8 @@ export default function Wintercollection() {
                     )}
                 </div>
             </div>
-            <UpperFooter/>
-            <Footer/>
+            <UpperFooter />
+            <Footer />
         </div>
     );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import {Link} from 'react-router-dom'
 
-export default function ListingSingleProduct({ Name, Price, DiscountedPrice, img }) {
+export default function ListingSingleProduct({ Name, Price, DiscountedPrice, img, link }) {
   const [imageLoaded, setImageLoaded] = useState(false)
   const [imageError, setImageError] = useState(false)
 
@@ -70,10 +71,9 @@ export default function ListingSingleProduct({ Name, Price, DiscountedPrice, img
           )}
         </div>
         
-        {/* Quick Action Button */}
-        <button className="quick-view-btn">
+        <Link to={`/product/${link}`} className="quick-view-btn">
           Quick View
-        </button>
+        </Link>
       </div>
     </div>
   )

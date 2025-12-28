@@ -39,7 +39,7 @@ export default function Footer() {
         <div className="footer-section newsletter-section">
           <h3 className="section-title">Newsletter Signup</h3>
           <p className="newsletter-text">
-            Subscribe to our newsletter and get 10% off your first purchase
+            Subscribe to our newsletter
           </p>
           <form onSubmit={handleSubscribe} className="newsletter-form">
             <input
@@ -59,7 +59,7 @@ export default function Footer() {
       
       {/* Copyright Section */}
       <div className="copyright">
-        <p>&copy; 2024 #21 - Mode. All rights reserved.</p>
+        <p>&copy; 2025 #SHOP LazyE. All rights reserved.</p>
       </div>
     </footer>
   );

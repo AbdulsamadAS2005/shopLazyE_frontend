@@ -8,6 +8,10 @@ import Bestsellers from './pages/bestsellers';
 import Summercollection from './pages/summercollection';
 import Wintercollection from './pages/wintercollection';
 import Allproducts from './pages/allproducts';
+import SingleProduct from './pages/singleProduct';
+import Cart from './pages/cart';
+import Header from './components/header';
+import Checkout from './pages/checkout';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -22,10 +26,13 @@ function App() {
       <Route path='/summercollection' element={<Summercollection/>}/>
       <Route path='/wintercollection' element={<Wintercollection/>}/>
       <Route path='/allproducts' element={<Allproducts/>}/>
+      <Route path='/product/:id' element={<SingleProduct/>}/>
+      <Route path='/cart' element={<Cart/>}/>
+      <Route path='/checkout' element={<Checkout/>}/>
     </Routes>
     </BrowserRouter>
     </>
   )
 }
 
-export default App
+export default App;

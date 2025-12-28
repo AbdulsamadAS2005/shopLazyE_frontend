@@ -127,6 +127,7 @@ export default function Newarrivals() {
                   Price={product.Price} 
                   DiscountedPrice={product.DiscountedPrice} 
                   img={product.ImageUrl} 
+                  link={product._id}
                 />
               ))}
             </div>

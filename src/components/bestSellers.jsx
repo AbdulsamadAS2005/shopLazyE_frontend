@@ -42,7 +42,7 @@ export default function BestSeller() {
       <div className="allarrivals">
         {bestSellers.length > 0 ? (
           bestSellers.slice(0, 8).map((product, i) => (
-            <ListingSingleProduct key={product._id || i} Name={product.Name} Price={product.Price} DiscountedPrice={product.DiscountedPrice} img={product.ImageUrl} />
+            <ListingSingleProduct key={product._id || i} Name={product.Name} Price={product.Price} DiscountedPrice={product.DiscountedPrice} img={product.ImageUrl} link={product._id} />
           ))
         ) : (
           ""

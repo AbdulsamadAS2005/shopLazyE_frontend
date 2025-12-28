@@ -42,7 +42,7 @@ export default function NewArrivals() {
       <div className="allarrivals">
         {newArrivals.length > 0 ? (
           newArrivals.slice(0, 8).map((product, i) => (
-            <ListingSingleProduct key={product._id || i} Name={product.Name} Price={product.Price} DiscountedPrice={product.DiscountedPrice} img={product.ImageUrl} />
+            <ListingSingleProduct key={product._id || i} Name={product.Name} Price={product.Price} DiscountedPrice={product.DiscountedPrice} img={product.ImageUrl} link={product._id} />
           ))
         ) : (
           ""
