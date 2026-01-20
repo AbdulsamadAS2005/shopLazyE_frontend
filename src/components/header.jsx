@@ -38,7 +38,7 @@ export default function Header() {
 
   const handleLogoError = (e) => {
     e.target.src =
-      "https://via.placeholder.com/150x50.png?text=Shop+LazyE+Logo";
+      "https://via.placeholder.com/150x50.png?text=Shop+layze+Logo";
   };
 
   const handleMouseEnter = () => {
@@ -60,7 +60,7 @@ export default function Header() {
           <Link to={'/'}>
             <img
               src={logo}
-              alt="Shop LazyE Logo"
+              alt="Shop layze Logo"
               className="logo"
               onError={handleLogoError}
             />

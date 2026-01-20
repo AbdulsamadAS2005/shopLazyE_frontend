@@ -39,7 +39,7 @@ export default function Home() {
 
   return (
     <div>
-      <title>SHOP LAZYE</title>
+      <title>SHOP layze</title>
       <TopOfHeader />
       <Header />
       <NewArrivals />

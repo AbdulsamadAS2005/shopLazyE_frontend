@@ -16,8 +16,8 @@ export default function UpperFooter() {
     },
     {
       icon: faExchangeAlt,
-      heading: "30 DAYS RETURN", 
-      text: "Simply return it within 30 days for an exchange."
+      heading: "3 DAYS RETURN", 
+      text: "Simply return it within 3 days for an exchange."
     },
     {
       icon: faShieldAlt,

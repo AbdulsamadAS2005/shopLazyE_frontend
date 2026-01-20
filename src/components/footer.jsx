@@ -16,12 +16,12 @@ export default function Footer() {
       <div className="footer-container">
         {/* Brand Section */}
         <div className="footer-section brand-section">
-          <h1 className="brand-title">SHOP LazyE</h1>
-          <p className="brand-subtitle">The designer men wear</p>
+          <h1 className="brand-title">SHOP layze</h1>
+          <p className="brand-subtitle">The designer men’s wear</p>
           <div className="contact-info">
-            <p className="location">Lahore_Pakistan</p>
-            <p className="email">iiabdulsamad05@gmail.com</p>
-            <p className="phone">+923187983047</p>
+            <p className="location">Lahore, Pakistan</p>
+            <p className="email">ceo@shoplayze.com</p>
+            <p className="phone">0334-2804455</p>
           </div>
         </div>
 
@@ -59,7 +59,7 @@ export default function Footer() {
       
       {/* Copyright Section */}
       <div className="copyright">
-        <p>&copy; 2025 #SHOP LazyE. All rights reserved.</p>
+        <p>&copy; 2025 #SHOP layze. All rights reserved.</p>
       </div>
     </footer>
   );
