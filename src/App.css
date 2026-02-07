@@ -3912,3 +3912,37 @@ body {
     font-size: 1.3rem;
   }
 }
+.video-banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-banner__video,
+.video-banner__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.video-banner__video--hidden { opacity: 0; }
+.video-banner__image { opacity: 0; }
+.video-banner__image--visible { opacity: 1; }
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .video-banner {
+    height: 50vh;
+    min-height: 300px;
+  }
+}
+@media (max-width: 480px) {
+  .video-banner {
+    height: 15vh;
+    min-height: 250px;
+  }
+}

@@ -27,7 +27,7 @@ export default function TopOfHeader() {
     <>
     {
       top?
-      <div style={{height:"30px",display:"flex",alignItems:'center'}}>
+      <div style={{height:"30px",display:"flex",alignItems:'center',backgroundColor:"white"}}>
         <marquee scrollAmount="10">{top}</marquee>
       </div>
       :

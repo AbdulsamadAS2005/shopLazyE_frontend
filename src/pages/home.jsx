@@ -8,7 +8,10 @@ import SummerCollection from '../components/summer'
 import WinterCollection from '../components/winter'
 import UpperFooter from '../components/upperFooter'
 import Footer from '../components/footer'
+import VideoBanner from '../components/videoBanner'
 const apiURL = import.meta.env.VITE_Backend;
+import videoSrc from '../assets/banner_video.mp4'
+import ImageSrc from '../assets/banner_image.jpeg'
 
 export default function Home() {
 
@@ -42,6 +45,7 @@ export default function Home() {
       <title>SHOP layze</title>
       <TopOfHeader />
       <Header />
+      <VideoBanner videoSrc={videoSrc} imageSrc={ImageSrc}/>
       <NewArrivals />
       <BestSeller />
       {
