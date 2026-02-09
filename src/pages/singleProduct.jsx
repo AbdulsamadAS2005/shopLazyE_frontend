@@ -273,11 +273,11 @@ export default function SingleProduct() {
             <div className="product-features">
               <div className="feature-item">
                 <span className="feature-icon">🚚</span>
-                <span>Free shipping on orders over Rs. 10,000</span>
+                <span>Free shipping on orders over Rs. 5000</span>
               </div>
               <div className="feature-item">
                 <span className="feature-icon">↩️</span>
-                <span>30-day return policy</span>
+                <span>3-day return policy</span>
               </div>
               <div className="feature-item">
                 <span className="feature-icon">🔒</span>
